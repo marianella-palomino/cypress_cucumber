@@ -19,3 +19,7 @@ And('A user clicks on the login button', () => {
 Then('A user will be logged in', () => {
     cy.url().should('contain', '/inventory.html')
 })
+
+Then('A user will receive a locked out message', () => {
+    cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Sorry, this user has been locked out.')
+})
