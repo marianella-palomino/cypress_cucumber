@@ -1,0 +1,84 @@
+Bienvenidos al Curso de Cypress
+
+1. npm init
+
+2. npm install cypress --save-dev  --> Instalación
+
+3. npx instalación https://www.npmjs.com/package/npx
+
+3.1 --> npm install -g npx
+3.2 --> npx cypress install --force --> forzar la instalación\
+
+4. node_modules/.bin/cypress open
+
+5. npx cypress open
+
+6. Parar consola --> ctrl + c
+
+
+
+. --> Clase
+# --> Id
+[] --> Atributo
+charset = "utf-8" --> Formato que permite meter tildes, ñ, textos en español
+node_modules\.bin\cypress run --> Para lanzar por consola la ejecución de los test
+npx cypress run
+npx cypress run --headed --> Para lanzar por consola pero que lo haga por el navegador
+npx cypress run --browser chrome --> Para lanzar en un browser en específico
+npx cypress run --spec "cypress\e2e\Seccion_2\assert.cy.js" --> Para lanzar una prueba en específico de un archivo 
+npx cypress run --spec "cypress\e2e\Seccion_1\*" --> Para lanzar una prueba en específico de una sección
+
+
+Cypres - BDD
+.only = @focus
+.skip = @skip
+
+
+
+***Pensar en qué estamos probando y no en cómo estamos probando***
+Scenario.- Nombre del caso
+Given.- Prerequisitos del caso
+When.- Acción a realizar
+Then.- Validación del caso
+
+
+
+--> XPath:
+        //xxx[@yyy]                         --Elementos XPath con al menos 1 atributo
+        //xxx[@yyy or @zzz]                 --Elementos que cumplan con uno de los dos atributos
+        //xxx[@yyy and @zzz]                --Elementos que cumplan con dos atributos
+        //div[text()='www']                 --Elementoss que no tengan atributos y solo es div
+        //span[text()='www']                --Elementos que no tengan atributos y solo es span
+        //span[contains(text(),'www')]      --Más de un elemento que no tengan atributos y contenga el texto www
+
+
+
+API:
+- GET: Obtener (Regresa 200)
+- POST: Insertar (Regresa 201)
+- PUT: Actualizar (Regresa 200)
+- DELETE: Eliminar (Regresa 200)
+
+
+
+URL:
+https://docs.cypress.io/api/commands/uncheck
+https://demoqa.com/webtables
+https://testingqarvn.com.es/radio-buttons/
+https://validaciones.rodrigovillanueva.com.mx/Radios_Ok.html
+https://jsfiddle.net/
+https://www.npmjs.com/package/cypress-plugin-tab
+https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+https://www.npmjs.com/package/cypress-xpath
+https://computer-database.gatling.io/computers/new
+http://demo.seleniumeasy.com/basic-checkbox-demo.html
+http://demo.seleniumeasy.com/jquery-dual-list-box-demo.html
+https://www.automationexercise.com/
+https://dapper-pastelito-04ff24.netlify.app/shop
+https://demo.seleniumeasy.com/basic-first-form-demo.html
+https://demo.seleniumeasy.com/drag-drop-range-sliders-demo.html
+https://demo.seleniumeasy.com/bootstrap-date-picker-demo.html
+https://mockaroo.com/ --> Página para hacer mockup
+https://beautifytools.com/excel-to-json-converter.php --> Página para convertir un excel a un json
+
+

@@ -1,18 +1,26 @@
 {
-  "name": "cypress_cucumber_bdd",
+  "name": "curso_cypress",
   "version": "1.0.0",
-  "description": "",
+  "description": "Curso de Cypress",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Nella",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.1.0",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "@4tw/cypress-drag-drop": "^2.2.5",
+    "cypress": "^13.6.2",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-plugin-tab": "^1.0.5",
+    "cypress-xpath": "^2.0.1"
   },
   "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/e2e/cucumber/Tests"
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/Cucumber/Tests"
+  },
+  "dependencies": {
+    "mysql2": "^3.6.5"
   }
 }
