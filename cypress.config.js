@@ -32,7 +32,7 @@ module.exports = defineConfig({
     user: 'tiendamia',
     password: 'Fufesos+76',
     database: 'tiendamia',
-    skuAMZ: "B07QHXWZ2M",
+    skuAMZ: "B09JQL8KP9",
   },
   e2e: {
     specPattern: '**/*.{js,jsx,ts,tsx,feature}',

@@ -25,13 +25,17 @@ Then('El usuario valida el titulo del producto contra el campo correspondiente e
     productPage.validateProductTitle();
 })
 
+Then('El usuario valida la capacidad del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductCapacity();
+})
+
 Then('El usuario valida el color del producto contra el campo correspondiente en la API', function() {
     productPage.validateProductColor();
 })
 
-// Then('El usuario valida el style del producto contra el campo correspondiente en la API', function() {
-//     productPage.validateProductStyle();
-// })
+Then('El usuario valida el style del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductStyle();
+})
 
 Then('El usuario valida el vendor del producto contra el campo correspondiente en la API', function() {
     productPage.validateProductVendor();
@@ -39,4 +43,12 @@ Then('El usuario valida el vendor del producto contra el campo correspondiente e
 
 Then('El usuario valida el stock del producto contra el campo correspondiente en la API', function() {
     productPage.validateProductStock();
+})
+
+Then('El usuario valida la devolucion del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductReturns();
+})
+
+Then('El usuario valida la condicion del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductStatus();
 })
