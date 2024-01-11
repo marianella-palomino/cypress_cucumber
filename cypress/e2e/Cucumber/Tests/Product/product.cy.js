@@ -13,20 +13,30 @@ Given('El usuario ejecuta la api de producto', function() {
 })
 
 When('El usuario hace click en el producto', function() {
-    console.log('zzz',this.apiProductResponse);
     productPage.clickSearchButton();
     productPage.enterFirstProduct();
 })
 
-Then('El usuario valida la marca del producto contra el campo X de la api', function() {
-    console.log('zzz',this.apiProductResponse);
-    productPage.validateProductBrand(sku);
+Then('El usuario valida la marca del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductBrand();
 })
 
-Then('El usuario valida el precio del producto contra el campo X de la api', function() {
-    productPage.validateProductPrice();
+Then('El usuario valida el titulo del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductTitle();
 })
 
-Then('El usuario valida el stock del producto contra el campo X de la api', function() {
-    productPage.validateInStock();
+Then('El usuario valida el color del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductColor();
+})
+
+// Then('El usuario valida el style del producto contra el campo correspondiente en la API', function() {
+//     productPage.validateProductStyle();
+// })
+
+Then('El usuario valida el vendor del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductVendor();
+})
+
+Then('El usuario valida el stock del producto contra el campo correspondiente en la API', function() {
+    productPage.validateProductStock();
 })
