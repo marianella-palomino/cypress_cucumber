@@ -7,16 +7,14 @@ class productPage{
         firstProductCard: () => cy.get('.item-card'),
         productBrand: () => cy.get('.brand'),
         productTitle: () => cy.get('.title'),
-        productCapacity: () => cy.get('.option-7139114 > .variation-title-container > .variation-selected'),
-        productColor: ()=> cy.get('.variation-title-container > .variation-selected'),
+        productCapacity: () => cy.get('input[data-optionname=Color] + .variation-title-container .variation-selected'),
+        productColor: ()=> cy.get('input[data-optionname=Color] + .variation-title-container .variation-selected'),
         productStyle: ()=> cy.get('.single-title-container > .variation-selected'),
         productVendor: ()=> cy.get('.product-details-container > :nth-child(5) > :nth-child(3)'),
         productStock: ()=> cy.get('.product-details-container > :nth-child(1) > :nth-child(3)'),
         productReturns: ()=> cy.get('.product-details-container > :nth-child(3) > :nth-child(3)'),
         productStatus: ()=> cy.get('.product-details-container > :nth-child(4) > :nth-child(3)'),
-        productWeight: ()=> cy.get('.product-details-container > :nth-child(2) > :nth-child(3)'),
-        productSKU: ()=> cy.get('.sku-container-info > span'),
-        productImage: ()=> cy.get('.selected-variant > img'),
+        productImage: ()=> cy.get('img.fotorama__img')
     }
 
     searchSKU(sku) {
@@ -35,29 +33,16 @@ class productPage{
         cy.wait(2000);
         
         cy.get('@apiProductResponse').then((apiProductResponse) => {
-            console.log('aaa', apiProductResponse);
 
             const brandText = apiProductResponse.body.product.brand;
-            console.log('bbb', brandText);
-    
             this.elements.productBrand().should('be.visible').and('contain', brandText);
         });
-        // cy.wait(2000);
-        // console.log('xxx', sku);
-        
+
         // cy.apiProduct(sku).then((apiProductResponse) => {
-        //     cy.wait(2000);
-
-        //     console.log('aaa',apiProductResponse);
-
         //     const brandText = apiProductResponse.product.brand;
-        //     console.log('bbb',brandText);
 
         //     this.elements.productBrand().should('be.visible').invoke('text').then((textProductBrand) => {
-        //         console.log('ccc',textProductBrand);
         //         const cleanedTextProductBrand = textProductBrand.trim();
-    
-        //         console.log('yyy',cleanedTextProductBrand);
         //         expect(cleanedTextProductBrand).to.eq(brandText);
         //     });
 
@@ -140,12 +125,10 @@ class productPage{
             const stockText = apiProductResponse.body.product.availability.stock.toString();
             
             this.elements.productStock().should('exist').invoke('text').then((productStock) => {
-                if (stockText === 'true' && productStock === 'En stock') {
-                    cy.log('La validación exitosa productStock es "En stock" cuando stockText es "true"');
-                } else if(stockText === 'false' && productStock === 'Sin Stock'){
-                    cy.log('La validación exitosa productStock es "Sin Stock" cuando stockText es "false"');
+                if ((stockText === 'true' && productStock === 'En stock') || (stockText === 'false' && productStock === 'Sin Stock')){
+                    cy.wrap('0').should('contain', '0');
                 } else{ 
-                    throw new Error(`La validación falló. productStock: ${productStock}, stockText: ${stockText}`);
+                    throw new Error(`La validación falló, productStock: ${productStock}, stockText: ${stockText}`);
                 }
             });
         });
@@ -157,12 +140,10 @@ class productPage{
             const returnsText = apiProductResponse.body.product.merchant_returns.toString();
             
             this.elements.productReturns().should('exist').invoke('text').then((productReturns) => {
-                if (returnsText === 'true' && productReturns === 'Si') {
-                    cy.log('La validación exitosa productReturns es "Si" cuando returnsText es "true"');
-                } else if(returnsText === 'false' && productReturns === 'No'){
-                    cy.log('La validación exitosa productReturns es "No" cuando returnsText es "false"');
+                if ((returnsText === 'true' && productReturns === 'Si') || (returnsText === 'false' && productReturns === 'No')) {
+                    cy.wrap('0').should('contain', '0');
                 } else{ 
-                    throw new Error(`La validación falló. productReturns: ${productReturns}, returnsText: ${returnsText}`);
+                    throw new Error(`La validación falló.\, productReturns: ${productReturns}, returnsText: ${returnsText}`);
                 }
             });
         });
@@ -173,16 +154,19 @@ class productPage{
             const statusText = apiProductResponse.body.product.product_status.toString();
             
             this.elements.productStatus().should('exist').invoke('text').then((productStatus) => {
-                if (statusText === 'new' && productStatus === 'Nuevo') {
-                    cy.log('La validación exitosa productStatus es "Nuevo" cuando statusText es "new"');
-                } else if(statusText === 'used' && productStatus === 'Usados'){
-                    cy.log('La validación exitosa productStatus es "Usados" cuando statusText es "used"');
-                } else if(statusText === 'refurbished' && productStatus === 'Refurbished'){
-                    cy.log('La validación exitosa productStatus es "Refurbished" cuando statusText es "refurbished"');
+                if ((statusText === 'new' && productStatus === 'Nuevo') || (statusText === 'used' && productStatus === 'Usados') || (statusText === 'refurbished' && productStatus === 'Refurbished')){
+                    cy.wrap('0').should('contain', '0');
                 } else{ 
-                    throw new Error(`La validación falló. productStatus: ${productStatus}, statusText: ${statusText}`);
+                    throw new Error(`La validación falló, productStatus: ${productStatus}, statusText: ${statusText}`);
                 }
             });
+        });
+    }
+
+    validateProductImage(){
+        cy.get('@apiProductResponse').then((apiProductResponse) => {
+            const apiImageUrl = apiProductResponse.body.product.sized_images[0].medium.src;
+            this.elements.productImage().should('have.attr', 'src', apiImageUrl);
         });
     }
     

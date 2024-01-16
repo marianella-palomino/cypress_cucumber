@@ -13,3 +13,4 @@ And El usuario valida el vendor del producto contra el campo correspondiente en 
 And El usuario valida el stock del producto contra el campo correspondiente en la API
 And El usuario valida la devolucion del producto contra el campo correspondiente en la API
 And El usuario valida la condicion del producto contra el campo correspondiente en la API
+And El usuario valida la imagen del producto contra el campo correspondiente en la API
